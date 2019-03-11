@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "3e2e87297e60dfd154d8d5e9e6c14e59c75d1c11"
+    "signature": "26aef6e494e801f69c3f507eb12ff47d28368931"
   },
   "compilationOptions": {
     "defines": [
@@ -27,6 +27,7 @@
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
+          "bootstrap": "3.3.1",
           "polozi_ba.Data": "1.0.0"
         },
         "runtime": {
@@ -36,6 +37,12 @@
           "polozi_ba.dll": {}
         }
       },
+      "bootstrap/3.3.1": {
+        "dependencies": {
+          "jQuery": "1.9.0"
+        }
+      },
+      "jQuery/1.9.0": {},
       "Microsoft.EntityFrameworkCore/2.2.2": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "2.2.2",
@@ -3263,6 +3270,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "bootstrap/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+OganGYT1i1uIwZPa+AQUT3F3XxWUgFpFoYj+ujM4U5ZJYywW+nEl3v+A5BElLZNbk0FkFFZV4JixIfL6Q4xfg==",
+      "path": "bootstrap/3.3.1",
+      "hashPath": "bootstrap.3.3.1.nupkg.sha512"
+    },
+    "jQuery/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bS6OGSd/QL39vKKhATpeehgZDCzV6foRJ52EocEGAB29VetwXkQHN6KQIBlBbW9VJzuHr+rQxHYZ13MnPGQ/vw==",
+      "path": "jquery/1.9.0",
+      "hashPath": "jquery.1.9.0.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/2.2.2": {
       "type": "package",

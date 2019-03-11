@@ -13,45 +13,89 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="~/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/css/flexslider.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+    <!-- Flaticons  -->
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header></header>
+    <nav class="colorlib-nav" role="navigation">
+        <div class="upper-menu">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">polozi_ba</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>The ideal WordPress theme for online learning center</p>
+                    </div>
+                    <div class="col-xs-6 col-md-push-2 text-right">
+                        <p class="btn-apply"><a href="#">Our Vision</a> <a href="#">Our Missions</a> <a href="#">Sign Up</a></p>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </div>
+        <div class="top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div id="colorlib-logo"><a href="index.html">Knowledge</a></div>
+                    </div>
+                    <div class="col-md-10 text-right menu-1">
+                        <ul>
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li >
+                                <a asp-controller="Home" asp-action="Privacy">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="" id="page">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - polozi_ba - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer id="colorlib-footer">
+        <div class="copy">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">
+                                &copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </small><br>
+                            <small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
