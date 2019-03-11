@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polozi_ba", "polozi_ba\polozi_ba.csproj", "{0ACFC47D-4BDC-45B5-901E-12564928815E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polozi_ba.Data", "polozi_ba.Data\polozi_ba.Data.csproj", "{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0ACFC47D-4BDC-45B5-901E-12564928815E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACFC47D-4BDC-45B5-901E-12564928815E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACFC47D-4BDC-45B5-901E-12564928815E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

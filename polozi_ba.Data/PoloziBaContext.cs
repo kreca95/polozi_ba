@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using polozi_ba.Data.Models;
 
 namespace polozi_ba.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class PoloziBaContext : IdentityDbContext<Korisnik>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public PoloziBaContext(DbContextOptions<PoloziBaContext> options)
             : base(options)
         {
+
         }
     }
 }

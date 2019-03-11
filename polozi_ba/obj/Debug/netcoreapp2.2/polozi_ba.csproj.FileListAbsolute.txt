@@ -30,3 +30,5 @@ C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\polozi_b
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\polozi_ba.dll
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\polozi_ba.pdb
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\polozi_ba.csproj.CopyComplete
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Data.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Data.pdb

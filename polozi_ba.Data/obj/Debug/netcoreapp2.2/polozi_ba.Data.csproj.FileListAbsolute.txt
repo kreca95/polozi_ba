@@ -1,0 +1,16 @@
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\polozi_ba.Data.deps.json
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\polozi_ba.Data.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.csprojAssemblyReference.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.csproj.CoreCompileInputs.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.AssemblyInfoInputs.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.AssemblyInfo.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\polozi_ba.Data.runtimeconfig.json
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\polozi_ba.Data.runtimeconfig.dev.json
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\polozi_ba.Data.pdb
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.csproj.CopyComplete
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Data\obj\Debug\netcoreapp2.2\polozi_ba.Data.pdb
