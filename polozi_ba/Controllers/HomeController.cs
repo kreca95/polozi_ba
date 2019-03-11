@@ -15,6 +15,12 @@ namespace polozi_ba.Controllers
             return View();
         }
 
+        public IActionResult Pretraga(string predmet, string kategorija)
+        {
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -9,5 +9,8 @@ namespace polozi_ba.Data.Models
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
+
+        public virtual IEnumerable<Predmet> Predmeti { get; set; }
+
     }
 }

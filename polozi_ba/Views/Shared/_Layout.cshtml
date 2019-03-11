@@ -38,8 +38,8 @@
 </head>
 <body>
     <header></header>
-    <nav class="colorlib-nav" role="navigation">
-        <div class="upper-menu">
+    <nav class="colorlib-nav bg-dark" role="navigation">
+        @*<div class="upper-menu">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-4">
@@ -50,16 +50,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="top-menu">
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <div id="colorlib-logo"><a href="index.html">Knowledge</a></div>
+                        <div id="colorlib-logo"><a href="/home/index">Polozi.ba</a></div>
                     </div>
                     <div class="col-md-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="">
+                                <a asp-controller="Home" asp-action="Index">Naslovna</a>
+                            </li>
                             <li >
                                 <a asp-controller="Home" asp-action="Privacy">About</a>
                             </li>

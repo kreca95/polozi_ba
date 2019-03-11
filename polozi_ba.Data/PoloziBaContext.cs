@@ -14,5 +14,7 @@ namespace polozi_ba.Data
         {
 
         }
+        public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Predmet> Predmeti { get; set; }
     }
 }

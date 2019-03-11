@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using polozi_ba.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using polozi_ba.Data.Models;
 
 namespace polozi_ba
 {
@@ -38,7 +39,7 @@ namespace polozi_ba
             services.AddDbContext<PoloziBaContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Korisnik>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<PoloziBaContext>();
 
