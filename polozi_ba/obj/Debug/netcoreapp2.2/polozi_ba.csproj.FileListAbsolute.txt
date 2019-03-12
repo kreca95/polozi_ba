@@ -33,3 +33,6 @@ C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\polozi_b
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Data.dll
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Data.pdb
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Home\Pretraga.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Service.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\bin\Debug\netcoreapp2.2\polozi_ba.Service.pdb
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Predmet\Index.g.cshtml.cs

@@ -43,6 +43,7 @@ namespace polozi_ba
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<PoloziBaContext>();
 
+            services.AddScoped<IPredmet,polozi_ba.Service.PredmetService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

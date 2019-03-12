@@ -1,0 +1,14 @@
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Service.deps.json
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Service.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Service.pdb
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Data.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Data.pdb
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.csprojAssemblyReference.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.csproj.CoreCompileInputs.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.AssemblyInfoInputs.cache
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.AssemblyInfo.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.csproj.CopyComplete
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.dll
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\obj\Debug\netcoreapp2.2\polozi_ba.Service.pdb
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Service.runtimeconfig.json
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba.Service\bin\Debug\netcoreapp2.2\polozi_ba.Service.runtimeconfig.dev.json

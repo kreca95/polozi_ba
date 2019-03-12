@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polozi_ba", "polozi_ba\polozi_ba.csproj", "{0ACFC47D-4BDC-45B5-901E-12564928815E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "polozi_ba", "polozi_ba\polozi_ba.csproj", "{0ACFC47D-4BDC-45B5-901E-12564928815E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polozi_ba.Data", "polozi_ba.Data\polozi_ba.Data.csproj", "{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "polozi_ba.Data", "polozi_ba.Data\polozi_ba.Data.csproj", "{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polozi_ba.Service", "polozi_ba.Service\polozi_ba.Service.csproj", "{C1D823AD-62A7-4B7A-898F-73B9D74DA85C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9281EC52-7FFD-4F09-B383-DE11E0E5F5CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D823AD-62A7-4B7A-898F-73B9D74DA85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D823AD-62A7-4B7A-898F-73B9D74DA85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D823AD-62A7-4B7A-898F-73B9D74DA85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D823AD-62A7-4B7A-898F-73B9D74DA85C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

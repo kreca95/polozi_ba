@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using polozi_ba.Data.Models;
 
@@ -16,5 +13,6 @@ namespace polozi_ba.Data
         }
         public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<Predmet> Predmeti { get; set; }
+
     }
 }

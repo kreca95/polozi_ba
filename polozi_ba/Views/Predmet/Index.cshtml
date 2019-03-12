@@ -1,0 +1,11 @@
+﻿@model IEnumerable<polozi_ba.Data.Models.Predmet>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    <p>@item.Naziv</p>
+}
