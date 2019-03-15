@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace polozi_ba.Service
 {
@@ -22,21 +23,23 @@ namespace polozi_ba.Service
             _context.SaveChanges();
         }
 
-        public async Task Dodaj(Data.Models.Predmet predmet)
+        public void Dodaj(Data.Models.Predmet predmet)
         {
-            await _context.Predmeti.AddAsync(predmet);
-            await _context.SaveChangesAsync();
+             _context.Predmeti.Add(predmet);
+             _context.SaveChanges();
         }
 
-        public async Task Izbrisi(int id)
+        public void Izbrisi(int id)
         {
-            var predmet = await _context.Predmeti.FirstOrDefaultAsync(p => p.Id == id);
+            var predmet = _context.Predmeti.FirstOrDefault(p=> p.Id==id);
             _context.Remove(predmet);
+            _context.SaveChanges();
         }
 
-        public async Task<Data.Models.Predmet> NadjiPredmet(int id)
+        public polozi_ba.Data.Models.Predmet NadjiPredmet(int id)
         {
-            var predmet = await _context.Predmeti.FirstOrDefaultAsync(p => p.Id == id);
+            var predmet = _context.Predmeti.Where(p => p.Id == id).FirstOrDefault();
+
             return predmet;
         }
 

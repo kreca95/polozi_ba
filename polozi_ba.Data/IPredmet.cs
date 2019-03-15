@@ -8,11 +8,12 @@ namespace polozi_ba.Data
 {
     public interface IPredmet
     {
-        Task Dodaj(Predmet predmet);
-        Task Izbrisi(int id);
+        void Dodaj(Predmet predmet);
+        void Izbrisi(int id);
         void Azuriraj(Predmet predmet);
 
-        Task<Predmet> NadjiPredmet(int id);
+        Predmet NadjiPredmet(int id);
+
         IEnumerable<Predmet> SviPredmeti();
 
     }

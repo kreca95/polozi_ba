@@ -55,3 +55,7 @@ C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Ar
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Predmet\Dodaj.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Predmet\Detalji.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AdminLayout.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Predmet\Uredi.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Panel\Index.g.cshtml.cs

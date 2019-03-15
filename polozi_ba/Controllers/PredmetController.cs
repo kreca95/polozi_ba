@@ -24,11 +24,58 @@ namespace polozi_ba.Controllers
             return View(model);
         }
 
+        public ActionResult Dodaj()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Dodaj(Predmet predmet)
         {
             _predmetService.Dodaj(predmet);
 
-            return View();
+            return RedirectToAction("index");
+        }
+
+        [HttpPost]
+        public bool Izbrisi(int id)
+        {
+            try
+            {
+                _predmetService.Izbrisi(id);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
+        }
+
+
+        public  IActionResult Detalji(int id)
+        {
+            var predmet = _predmetService.NadjiPredmet(id);
+            return View(predmet);
+        }
+
+        public IActionResult Uredi(int id)
+        {
+            var predmet=_predmetService.NadjiPredmet(id);
+            return View(predmet);
+        }
+
+        [HttpPost]
+        public IActionResult Uredi(Predmet predmet,int id)
+        {
+            if (predmet.Id!=id)
+            {
+                return BadRequest();
+            }
+            _predmetService.Azuriraj(predmet);
+
+            return RedirectToAction("index");
         }
     }
 }

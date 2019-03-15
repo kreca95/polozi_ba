@@ -1,11 +1,61 @@
 ﻿@model IEnumerable<polozi_ba.Data.Models.Predmet>
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 <h2>Index</h2>
 
-@foreach (var item in Model)
-{
-    <p>@item.Naziv</p>
-}
+<a class="btn btn-primary" asp-controller="Predmet" asp-action="Dodaj">Dodaj novi predmet</a>
+
+<table class="table table-bordered">
+    <tr>
+        <td>ID</td>
+        <td>Naziv</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Naziv</td>
+            <td>
+                <a href="" onclick="Izbrisi(@item.Id)"> <i class="fa fa-trash"></i></a>
+                <a asp-controller="Predmet" asp-action="Uredi" asp-route-id="@item.Id">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+ function Izbrisi(id){
+        var txt;
+        var r = confirm("Jeste li sigurni da zelite izbrisati predmet?");
+        if (r == true) {
+
+            $.ajax(
+            {
+                type: "POST",
+                url: '@Url.Action("Izbrisi", "Predmet")',
+                data: {
+                    id: id
+                },
+                error: function (result) {
+                    alert("error");
+                },
+                success: function (result) {
+                    if (result == true) {
+                        alert("Uspješno izbrisano")
+                        location.reload();
+                    }
+                    else {
+                        alert("Greška!");
+                    }
+                }
+            });
+        }
+    }
+</script>

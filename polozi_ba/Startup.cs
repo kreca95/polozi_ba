@@ -35,13 +35,22 @@ namespace polozi_ba
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            
+            //baza i identity
             services.AddDbContext<PoloziBaContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Korisnik>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<PoloziBaContext>();
+
+            //FB AUTH
+            services.AddAuthentication()
+                .AddFacebook(options=> {
+                    options.AppId= "346508559443989";
+                    options.AppSecret= "7867bb5d8de5d09d02805ac4e4a9cf56";
+                });
+
 
             services.AddScoped<IPredmet,polozi_ba.Service.PredmetService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

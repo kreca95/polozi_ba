@@ -33,8 +33,8 @@ namespace polozi_ba.Controllers
 
         public async Task<IActionResult> Privacy()
         {
-            var predmet = await _predmetService.NadjiPredmet(1);
-            return View(predmet);
+            
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

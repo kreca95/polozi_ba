@@ -1,0 +1,33 @@
+﻿@model polozi_ba.Data.Models.Predmet
+@{
+    ViewData["Title"] = "Izbrisi";
+}
+
+<h2>Izbrisi @Model.Naziv</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Naziv
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Id
+            </td>
+            <td>
+                @Model.Naziv
+
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+    <a asp-controller="Predmet" asp-action="Izbrisi" asp-route-id="@Model.Id">Izbrisi </a>
