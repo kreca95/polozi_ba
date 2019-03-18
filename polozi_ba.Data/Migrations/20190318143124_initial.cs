@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace polozi_ba.Data.Migrations
 {
-    public partial class dodanaklasainstrukcije : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,32 @@ namespace polozi_ba.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Gradovi",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gradovi", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Predmeti",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Predmeti", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,23 +182,27 @@ namespace polozi_ba.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Predmet",
+                name: "KorisnikPredmet",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Naziv = table.Column<string>(nullable: true),
-                    KorisnikId = table.Column<string>(nullable: true)
+                    KorisnikId = table.Column<string>(nullable: false),
+                    PredmetId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Predmet", x => x.Id);
+                    table.PrimaryKey("PK_KorisnikPredmet", x => new { x.KorisnikId, x.PredmetId });
                     table.ForeignKey(
-                        name: "FK_Predmet_AspNetUsers_KorisnikId",
+                        name: "FK_KorisnikPredmet_AspNetUsers_KorisnikId",
                         column: x => x.KorisnikId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_KorisnikPredmet_Predmeti_PredmetId",
+                        column: x => x.PredmetId,
+                        principalTable: "Predmeti",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -215,9 +245,9 @@ namespace polozi_ba.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Predmet_KorisnikId",
-                table: "Predmet",
-                column: "KorisnikId");
+                name: "IX_KorisnikPredmet_PredmetId",
+                table: "KorisnikPredmet",
+                column: "PredmetId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -238,13 +268,19 @@ namespace polozi_ba.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Predmet");
+                name: "Gradovi");
+
+            migrationBuilder.DropTable(
+                name: "KorisnikPredmet");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Predmeti");
         }
     }
 }

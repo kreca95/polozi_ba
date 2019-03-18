@@ -133,6 +133,19 @@ namespace polozi_ba.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("polozi_ba.Data.Models.Grad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gradovi");
+                });
+
             modelBuilder.Entity("polozi_ba.Data.Models.Korisnik", b =>
                 {
                     b.Property<string>("Id")
@@ -188,19 +201,29 @@ namespace polozi_ba.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("polozi_ba.Data.Models.KorisnikPredmet", b =>
+                {
+                    b.Property<string>("KorisnikId");
+
+                    b.Property<int>("PredmetId");
+
+                    b.HasKey("KorisnikId", "PredmetId");
+
+                    b.HasIndex("PredmetId");
+
+                    b.ToTable("KorisnikPredmet");
+                });
+
             modelBuilder.Entity("polozi_ba.Data.Models.Predmet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("KorisnikId");
-
-                    b.Property<string>("Naziv");
+                    b.Property<string>("Naziv")
+                        .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Predmeti");
                 });
@@ -250,11 +273,17 @@ namespace polozi_ba.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("polozi_ba.Data.Models.Predmet", b =>
+            modelBuilder.Entity("polozi_ba.Data.Models.KorisnikPredmet", b =>
                 {
-                    b.HasOne("polozi_ba.Data.Models.Korisnik")
-                        .WithMany("Predmeti")
-                        .HasForeignKey("KorisnikId");
+                    b.HasOne("polozi_ba.Data.Models.Korisnik", "Korisnik")
+                        .WithMany("KorisnikPredmeti")
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("polozi_ba.Data.Models.Predmet", "Predmet")
+                        .WithMany("KorisnikPredmeti")
+                        .HasForeignKey("PredmetId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

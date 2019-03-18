@@ -4,9 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.OData.Query.SemanticAst;
 using polozi_ba.Data;
 using polozi_ba.Data.Models;
 using polozi_ba.Models;
+using polozi_ba.Models.Naslovna;
 
 namespace polozi_ba.Controllers
 {
@@ -22,7 +25,12 @@ namespace polozi_ba.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+            var model = new IndexViewModel();
+
+            model.PredmetiSelectLista = new SelectList(_predmetService.SviPredmeti(), "Id", "Naziv");
+
+            return View(model);
         }
 
         public IActionResult Pretraga(string predmet, string grad)

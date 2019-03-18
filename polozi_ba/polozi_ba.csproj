@@ -24,4 +24,9 @@
     <ProjectReference Include="..\polozi_ba.Service\polozi_ba.Service.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Models\Korisnik\" />
+  </ItemGroup>
+
 </Project>

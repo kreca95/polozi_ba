@@ -12,5 +12,7 @@ namespace polozi_ba.Data.Models
         [Required]
         public string Naziv { get; set; }
 
+        public List<KorisnikPredmet> KorisnikPredmeti { get; set; }
+
     }
 }

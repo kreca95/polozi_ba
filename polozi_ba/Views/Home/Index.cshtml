@@ -1,4 +1,6 @@
-﻿<div id="page">
+﻿@model polozi_ba.Models.Naslovna.IndexViewModel
+
+<div id="page">
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
@@ -29,21 +31,24 @@
                         <form method="post" class="colorlib-form">
                             <div class="row">
                                 @*<div class="col-md-3">
-                                    <div class="form-group">
-                                         <label for="search">Search Course</label> 
-                                        <div class="form-field">
-                                            <input type="text" id="search" class="form-control" placeholder="Keyword search">
+                                        <div class="form-group">
+                                             <label for="search">Search Course</label>
+                                            <div class="form-field">
+                                                <input type="text" id="search" class="form-control" placeholder="Keyword search">
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>*@
+                                    </div>*@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <!-- <label for="course">Category Course</label> -->
                                         <div class="form-field">
                                             <i class="icon icon-arrow-down3"></i>
-                                            <select name="people" id="people" class="form-control">
-                                                <option value="#">Matematika</option>
-                                                <option value="#">Engleski</option>
+                                            @*<select name="people" id="people" class="form-control">
+                                                    <option value="#">Matematika</option>
+                                                    <option value="#">Engleski</option>
+                                                </select>*@
+                                            <select name="people" id="people" class="form-control" asp-items="@Model.PredmetiSelectLista"  >
+                                               <option>Izaberite predmet</option>
                                             </select>
                                         </div>
                                     </div>
