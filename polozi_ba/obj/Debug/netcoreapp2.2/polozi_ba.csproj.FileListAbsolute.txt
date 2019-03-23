@@ -59,3 +59,4 @@ C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Vi
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AdminLayout.g.cshtml.cs
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Predmet\Uredi.g.cshtml.cs
 C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Panel\Index.g.cshtml.cs
+C:\Users\kresi\source\repos\polozi_ba\polozi_ba\obj\Debug\netcoreapp2.2\Razor\Views\Panel\Korisnici.g.cshtml.cs

@@ -14,6 +14,8 @@ using polozi_ba.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using polozi_ba.Data.Models;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace polozi_ba
 {
@@ -23,7 +25,7 @@ namespace polozi_ba
         {
             Configuration = configuration;
         }
-
+        public IServiceProvider Service { get; set; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,29 +37,50 @@ namespace polozi_ba
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             //baza i identity
             services.AddDbContext<PoloziBaContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Korisnik>()
+            services.AddIdentity<Korisnik, IdentityRole>()
+                .AddEntityFrameworkStores<PoloziBaContext>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<PoloziBaContext>();
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredLength = 5;
+                options.Password.RequireUppercase = false;
+            });
 
             //FB AUTH
             services.AddAuthentication()
-                .AddFacebook(options=> {
-                    options.AppId= "346508559443989";
-                    options.AppSecret= "7867bb5d8de5d09d02805ac4e4a9cf56";
+                .AddFacebook(options =>
+                {
+                    options.AppId = "346508559443989";
+                    options.AppSecret = "7867bb5d8de5d09d02805ac4e4a9cf56";
+                    options.SaveTokens = true;
+                    options.ClaimActions.MapJsonKey(ClaimTypes.DateOfBirth, "birthday");
+                    options.Scope.Add("public_profile");
+                    options.Fields.Add("birthday");
+                    options.Fields.Add("picture");
+                    options.Fields.Add("name");
+                    options.Fields.Add("email");
+                    options.Fields.Add("gender");
+
+
                 });
 
 
-            services.AddScoped<IPredmet,polozi_ba.Service.PredmetService>();
+            services.AddScoped<IPredmet, polozi_ba.Service.PredmetService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider service)
         {
             if (env.IsDevelopment())
             {
@@ -80,9 +103,14 @@ namespace polozi_ba
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "api",
+                    template: "api/{cocontroller}/{action}/{id}");
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
 }

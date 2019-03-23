@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <div id="colorlib-logo"><a href="/home/index">Polozi.ba</a></div>
+                        <div id="colorlib-logo"><a asp-controller="Home" asp-action="Index">Polozi.ba</a></div>
                     </div>
                     <div class="col-md-10 text-right menu-1">
                         <ul>
@@ -65,9 +65,13 @@
                             <li>
                                 <a asp-controller="Home" asp-action="Privacy">About</a>
                             </li>
-                            <li>
-                                <a asp-controller="Panel" asp-action="Index">Panel</a>
-                            </li>
+                            @if (User.IsInRole("korisnik"))
+	                         {
+                                <li>
+                                    <a asp-controller="Panel" asp-action="Index">Panel</a>
+                                </li>
+                             }
+                            
                             <partial name="_LoginPartial" />
 
                         </ul>

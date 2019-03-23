@@ -1,0 +1,70 @@
+﻿@model IList<polozi_ba.Data.Models.Korisnik>
+@{
+    ViewData["Title"] = "Korisnici";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Korisnici</h2>
+
+<table class="table table-bordered dataTable">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Ime </td>
+            <td>Prezime</td>
+            <td>Mail</td>
+            <td>Uloge</td>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Ime
+                </td>
+                <td>
+                    @item.Prezime
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    <button class="admin" data-korisnikId="@item.Id">Promijeni korisnika u admina</button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+
+<script src="~/admin/jquery.min.js">
+
+</script>
+<script>
+    console.log(1)
+    $(".admin").click((e) => {
+        var id = e.target.dataset.korisnikid.toString();
+        $.ajax({
+            url: "/api/KorisnikAPI/KorisnikUAdmina",
+            data: { id: id } ,
+            success: (data) => {
+                console.log(data);
+            },
+            error: (err) => {
+                console.log("aa");
+            },
+        })
+
+    })
+
+</script>

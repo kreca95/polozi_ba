@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using polozi_ba.Data.Models;
 
@@ -32,6 +33,9 @@ namespace polozi_ba.Data
                 .HasOne(x => x.Predmet)
                 .WithMany(x => x.KorisnikPredmeti)
                 .HasForeignKey(x => x.PredmetId);
+
+            builder.Entity<IdentityRole>()
+                .HasData(new IdentityRole { Id="1",Name = "admin" });
         }
     }
 }

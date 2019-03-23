@@ -55,6 +55,14 @@ namespace polozi_ba.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name ="Ime")]
+            public string Ime { get; set; }
+
+            [Required]
+            [Display(Name = "Prezime")]
+            public string Prezime { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -67,10 +75,13 @@ namespace polozi_ba.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new Korisnik { UserName = Input.Email, Email = Input.Email };
+                var user = new Korisnik { UserName = Input.Email, Email = Input.Email, Ime = Input.Ime, Prezime = Input.Prezime,RoleId="1" };
+
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "admin");
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
