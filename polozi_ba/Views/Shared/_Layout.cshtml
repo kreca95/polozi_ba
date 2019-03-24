@@ -62,10 +62,8 @@
                             <li>
                                 <a asp-controller="Home" asp-action="Index">Naslovna</a>
                             </li>
-                            <li>
-                                <a asp-controller="Home" asp-action="Privacy">About</a>
-                            </li>
-                            @if (User.IsInRole("korisnik"))
+                            
+                            @if (User.Identity.IsAuthenticated)
 	                         {
                                 <li>
                                     <a asp-controller="Panel" asp-action="Index">Panel</a>

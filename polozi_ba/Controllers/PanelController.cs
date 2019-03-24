@@ -47,5 +47,13 @@ namespace polozi_ba.Controllers
             return BadRequest();
         }
 
+        public ActionResult Profil()
+        {
+
+
+
+            return View();
+        }
+
     }
 }

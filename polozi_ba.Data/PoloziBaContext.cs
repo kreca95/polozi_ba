@@ -16,11 +16,13 @@ namespace polozi_ba.Data
         public DbSet<Predmet> Predmeti { get; set; }
         public DbSet<Grad> Gradovi { get; set; }
         public DbSet<KorisnikPredmet> KorisnikPredmet { get; set; }
+        public DbSet<KorisnikGrad> KorisnikGrad { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            #region veza vise-vise izmedju korisnika i predmeta
             builder.Entity<KorisnikPredmet>()
                 .HasKey(x => new { x.KorisnikId, x.PredmetId });
 
@@ -33,9 +35,22 @@ namespace polozi_ba.Data
                 .HasOne(x => x.Predmet)
                 .WithMany(x => x.KorisnikPredmeti)
                 .HasForeignKey(x => x.PredmetId);
+            #endregion
 
-            builder.Entity<IdentityRole>()
-                .HasData(new IdentityRole { Id="1",Name = "admin" });
+            #region veza vise-vise izmedju korisnika i grada
+            builder.Entity<KorisnikGrad>()
+                .HasKey(x => new { x.KorisnikId, x.GradId });
+
+            builder.Entity<KorisnikGrad>()
+                .HasOne(x => x.Korisnik)
+                .WithMany(x => x.KorisnikGrad)
+                .HasForeignKey(x => x.KorisnikId);
+
+            builder.Entity<KorisnikGrad>()
+                .HasOne(x => x.Grad)
+                .WithMany(x => x.KorisnikGrad)
+                .HasForeignKey(x => x.GradId);
+            #endregion
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using polozi_ba.Data;
 
 namespace polozi_ba.Data.Migrations
 {
     [DbContext(typeof(PoloziBaContext))]
-    partial class PoloziBaContextModelSnapshot : ModelSnapshot
+    [Migration("20190324155812_dodana veza vise-vise izmedju korisnika i grada")]
+    partial class dodanavezaviseviseizmedjukorisnikaigrada
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

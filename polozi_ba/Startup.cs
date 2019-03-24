@@ -16,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using polozi_ba.Data.Models;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using polozi_ba.Service;
 
 namespace polozi_ba
 {
@@ -76,6 +78,7 @@ namespace polozi_ba
 
 
             services.AddScoped<IPredmet, polozi_ba.Service.PredmetService>();
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
