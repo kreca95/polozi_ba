@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using polozi_ba.Data;
 using polozi_ba.Data.Models;
 
 namespace polozi_ba.Areas.Identity.Pages.Account.Manage
@@ -17,15 +19,18 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<Korisnik> _userManager;
         private readonly SignInManager<Korisnik> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IPredmet _predmet;
 
         public IndexModel(
             UserManager<Korisnik> userManager,
             SignInManager<Korisnik> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IPredmet predmet)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _predmet = predmet;
         }
 
         public string Username { get; set; }
@@ -47,6 +52,12 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            public IEnumerable<SelectListItem> Predmeti { get; set; }
+
+            public IEnumerable<Predmet> KorisnikoviPredmeti { get; set; }
+
+            public string Ime { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -60,13 +71,15 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            var predmeti = _predmet.KorisnikoviPredmeti(user);
             Username = userName;
 
             Input = new InputModel
             {
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Predmeti = _predmet.SviPredmeti().Select(x => new SelectListItem { Text = x.Naziv, Value = x.Id.ToString() }),
+                KorisnikoviPredmeti =predmeti
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

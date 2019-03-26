@@ -1,6 +1,7 @@
 ﻿using polozi_ba.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,5 +17,7 @@ namespace polozi_ba.Data
 
         IEnumerable<Predmet> SviPredmeti();
 
+        void DodajPredmetKorisniku(int idPredmet,string korisnikId);
+        IQueryable<Predmet> KorisnikoviPredmeti(Korisnik korisnik);
     }
 }

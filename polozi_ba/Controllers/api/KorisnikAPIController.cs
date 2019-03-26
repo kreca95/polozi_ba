@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using polozi_ba.Data;
 using polozi_ba.Data.Models;
 
 namespace polozi_ba.Controllers.api
@@ -14,10 +15,12 @@ namespace polozi_ba.Controllers.api
     public class KorisnikAPIController : ControllerBase
     {
         private readonly UserManager<Korisnik> _userManager;
+        private readonly IPredmet _predmet;
 
-        public KorisnikAPIController(UserManager<Korisnik> userManager)
+        public KorisnikAPIController(UserManager<Korisnik> userManager,IPredmet predmet)
         {
             _userManager = userManager;
+            _predmet = predmet;
         }
 
 
@@ -38,6 +41,22 @@ namespace polozi_ba.Controllers.api
                 return Ok("User je sada korisnik");
             }
             return BadRequest("Nista nije odradjeno");
+        }
+
+        [HttpPost]
+        [Route("DodajPredmet")]
+        public async Task< IActionResult> DodajPredmetKorisniku([FromForm] IEnumerable<string> predmeti)
+        {
+            if (predmeti==null)
+            {
+                return BadRequest("predmet je null");
+            }
+            var user=await _userManager.FindByNameAsync(User.Identity.Name);
+            foreach (var item in predmeti)
+            {
+                _predmet.DodajPredmetKorisniku(Convert.ToInt32(item), user.Id);
+            }
+            return Ok();
         }
     }
 }

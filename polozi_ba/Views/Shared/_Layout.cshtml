@@ -79,13 +79,11 @@
             </div>
         </div>
     </nav>
-    <div  id="page">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
+    <main role="main"> 
+        <div id="page" style="padding-top:50px">
+                @RenderBody()
+        </div>
+    </main>
     <footer id="colorlib-footer">
         <div class="copy">
             <div class="container">
