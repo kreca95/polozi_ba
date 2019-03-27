@@ -88,14 +88,45 @@
                 </form>
             </div>
             <div class="tab-pane container fade" id="menu1">
-                <select name="gearquan" id="listaPredmeta" asp-items="Model.Input.Predmeti" class="demo" multiple="multiple"></select>
-                <button class="btn-save btn btn-primary btn-sm" id="submitZaPredmete">Save</button>
+                <div class="text-danger validation-summary-valid" data-valmsg-summary="true">
+                    <ul>
+                        <li style="display:none"></li>
+                    </ul>
+                </div>
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <td>
+                                Naziv
+                            </td>
+                            <td>Izbrisi</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Input.KorisnikoviPredmeti)
+                        {
+                            <tr>
+                                <td>
 
-              @foreach (var item in Model.Input.KorisnikoviPredmeti)
-              {
-                  <p>@item.Naziv</p>
-                  <p>@item.Id</p>
-              }
+                                    @item.Naziv
+
+                                </td>
+                                <td >
+                                    <button class="obrisiPredmet" value="@item.Id" >
+
+                                        <i class="fa fa-trash" ></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                    <div class="form-group">
+                        <select name="gearquan" id="listaPredmeta" asp-items="Model.Input.Predmeti" class="demo form-group" multiple="multiple"></select>
+                    </div>
+
+                    <button class="btn-save btn btn-primary btn-sm" id="submitZaPredmete">Save</button>
+
             </div>
             <div class="tab-pane container fade" id="menu2">...</div>
         </div>
@@ -126,8 +157,8 @@
                 niz.push(selected)
 
                 $.ajax({
-                    method:"post",
-                    data: { predmeti:selected},
+                    method: "post",
+                    data: { predmeti: selected },
                     url: "/api/korisnikapi/DodajPredmet",
                     success: (data) => {
                         console.log(data);
@@ -155,5 +186,20 @@
 
         return status;
     }
+
+    $(".obrisiPredmet").on("click",() => {
+
+        console.log($(this).val());
+        //$.ajax({
+        //    url: "/api/korisnikapi/IzbrisiPredmet",
+        //    data: { id: id },
+        //    success: (data) => {
+        //        console.log(data);
+        //    },
+        //    error: (err) => {
+        //        console.log(err);
+        //    }
+        //})
+    });
 
 </script>

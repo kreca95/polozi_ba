@@ -45,7 +45,7 @@ namespace polozi_ba.Controllers.api
 
         [HttpPost]
         [Route("DodajPredmet")]
-        public async Task< IActionResult> DodajPredmetKorisniku([FromForm] IEnumerable<string> predmeti)
+        public async Task<IActionResult> DodajPredmetKorisniku([FromForm] IEnumerable<string> predmeti)
         {
             if (predmeti==null)
             {
@@ -56,6 +56,15 @@ namespace polozi_ba.Controllers.api
             {
                 _predmet.DodajPredmetKorisniku(Convert.ToInt32(item), user.Id);
             }
+            return Ok();
+        }
+
+        [HttpPost("{id}")]
+        [Route("IzbrisiPredmet")]
+        public IActionResult IzbrisiPredmetKorisniku([FromQuery]int id)
+        {
+            var userId = _userManager.GetUserId(User);
+            _predmet.IzbrisiPredmetKorisniku(id, userId);
             return Ok();
         }
     }

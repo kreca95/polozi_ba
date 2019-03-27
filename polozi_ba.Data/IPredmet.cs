@@ -19,5 +19,6 @@ namespace polozi_ba.Data
 
         void DodajPredmetKorisniku(int idPredmet,string korisnikId);
         IQueryable<Predmet> KorisnikoviPredmeti(Korisnik korisnik);
+        void IzbrisiPredmetKorisniku(int idPredmet,string korisnikId);
     }
 }

@@ -51,6 +51,17 @@ namespace polozi_ba.Service
             _context.SaveChanges();
         }
 
+        public void IzbrisiPredmetKorisniku(int idPredmet,string korisnikId)
+        {
+            var korisnikPredmet = _context.KorisnikPredmet.Where(x => x.KorisnikId == korisnikId && x.PredmetId == idPredmet).SingleOrDefault();
+
+            if (korisnikPredmet!=null)
+            {
+                _context.KorisnikPredmet.Remove(korisnikPredmet);
+                _context.SaveChanges();
+            }
+        }
+
         public IQueryable<polozi_ba.Data.Models.Predmet> KorisnikoviPredmeti(Korisnik korisnik)
         {
             var predmeti = _context.Predmeti.FromSql($"select p.Naziv,p.Id from AspNetUsers u,KorisnikPredmet kp,Predmeti p where u.Id = {korisnik.Id}  and p.Id = kp.PredmetId");
