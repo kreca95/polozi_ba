@@ -1,0 +1,23 @@
+﻿@model IEnumerable<polozi_ba.Data.Models.Grad>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<a class="btn btn-primary" asp-controller="Grad" asp-action="Dodaj">Dodaj novi grad</a>
+
+<h2>Index</h2>
+
+<table class="table table-bordered" >
+    <tr>
+        <td>Id</td>
+        <td>Naziv</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Naziv</td>
+        </tr>
+    }
+</table>

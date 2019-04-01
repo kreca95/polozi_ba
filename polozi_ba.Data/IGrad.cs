@@ -8,10 +8,10 @@ namespace polozi_ba.Data
 {
     public interface IGrad
     {
-        Task Dodaj(Grad grad);
-        Task Izbrisi(int id);
+        void Dodaj(Grad grad);
+        void Izbrisi(int id);
         void Azuriraj(Grad grad);
-        Task NadjiGrad(int id);
+        Grad NadjiGrad(int id);
         IEnumerable<Grad> SviGradovi();
     }
 }

@@ -15,14 +15,14 @@ namespace polozi_ba.Service
             var client = new SmtpClient()
             {
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("@gmail.com", ""),
+                Credentials = new NetworkCredential("ssssad@ssa.com", ""),
                 Port=587,
                 Host= "smtp.gmail.com",
                 EnableSsl=true
             };
             var mailMessage = new MailMessage
             {
-                From = new MailAddress("@gmail.com")
+                From = new MailAddress("ssssad@ssa.com.com")
             };
             mailMessage.To.Add(email);
             mailMessage.Subject = subject;

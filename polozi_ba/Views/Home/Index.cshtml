@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12 search-wrap">
                     <div class="search-wrap-2">
-                        <form method="post" class="colorlib-form">
+                        <form method="post" class="colorlib-form" asp-controller="Home" asp-action="Pretraga">
                             <div class="row">
                                 @*<div class="col-md-3">
                                         <div class="form-group">
@@ -47,7 +47,7 @@
                                                     <option value="#">Matematika</option>
                                                     <option value="#">Engleski</option>
                                                 </select>*@
-                                            <select name="people" id="people" class="form-control" asp-items="@Model.PredmetiSelectLista"  >
+                                            <select asp-for="Predmet" id="people" class="form-control" asp-items="@Model.PredmetiSelectLista"  >
                                                <option>Izaberite predmet</option>
                                             </select>
                                         </div>
@@ -58,9 +58,8 @@
                                         <!-- <label for="difficulty">Difficulty</label> -->
                                         <div class="form-field">
                                             <i class="icon icon-arrow-down3"></i>
-                                            <select name="people" id="people" class="form-control">
-                                                <option value="#">Mostar</option>
-                                                <option value="#">Stolac</option>
+                                            <select class="form-control" asp-for="Grad" asp-items="@Model.GradoviSelectLista">
+                                                <option>Izaberite grad</option>
                                             </select>
                                         </div>
                                     </div>

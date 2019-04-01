@@ -20,17 +20,21 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<Korisnik> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly IPredmet _predmet;
+        private readonly IGrad _grad;
 
         public IndexModel(
             UserManager<Korisnik> userManager,
             SignInManager<Korisnik> signInManager,
             IEmailSender emailSender,
-            IPredmet predmet)
+            IPredmet predmet,
+            IGrad grad
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _predmet = predmet;
+            _grad = grad;
         }
 
         public string Username { get; set; }
@@ -54,6 +58,8 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
 
             public IEnumerable<SelectListItem> Predmeti { get; set; }
+
+            public IEnumerable<SelectListItem> Gradovi { get; set; }
 
             public IEnumerable<Predmet> KorisnikoviPredmeti { get; set; }
 
@@ -79,6 +85,7 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
                 Email = email,
                 PhoneNumber = phoneNumber,
                 Predmeti = _predmet.SviPredmeti().Select(x => new SelectListItem { Text = x.Naziv, Value = x.Id.ToString() }),
+                Gradovi=_grad.SviGradovi().Select(x=> new SelectListItem { Text=x.Naziv,Value=x.Id.ToString()}),
                 KorisnikoviPredmeti =predmeti
             };
 

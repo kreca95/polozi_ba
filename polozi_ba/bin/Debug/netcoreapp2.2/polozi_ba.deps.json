@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "e3d90c3374efbfcdf880ccf99334a9232409fa92"
+    "signature": "e945ec21b7e694afbeeaf7508b386ad334272b00"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "polozi_ba/1.0.0": {
         "dependencies": {
+          "AlertifyJS": "1.11.2",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
@@ -39,6 +40,7 @@
           "polozi_ba.dll": {}
         }
       },
+      "AlertifyJS/1.11.2": {},
       "bootstrap/3.3.1": {
         "dependencies": {
           "jQuery": "1.9.0"
@@ -4754,6 +4756,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AlertifyJS/1.11.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c8HZ4aChdCiHLBbQgo+kGNHG5ZOf9LpSG4EQ7tUC2pyvtiV07tO8XazeCk/FO8uYe/FB6YFaP1jDCvQub+29Jg==",
+      "path": "alertifyjs/1.11.2",
+      "hashPath": "alertifyjs.1.11.2.nupkg.sha512"
     },
     "bootstrap/3.3.1": {
       "type": "package",

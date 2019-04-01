@@ -79,6 +79,9 @@ namespace polozi_ba
 
             services.AddScoped<IPredmet, polozi_ba.Service.PredmetService>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IGrad, GradService>();
+            services.AddScoped<IPoloziBa, PoloziBaService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

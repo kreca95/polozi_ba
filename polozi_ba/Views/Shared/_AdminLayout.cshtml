@@ -114,24 +114,36 @@
                 <span>Tables</span>
             </a>
         </li>*@
+
+
             <li class="nav-item">
-                <a asp-controller="Predmet" asp-action="Index" class="nav-link">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Predmeti</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a asp-controller="Panel" asp-action="Korisnici" class="nav-link">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Korisnici</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/Identity/Account/Manage"  class="nav-link">
+                <a href="/Identity/Account/Manage" class="nav-link">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Profil</span>
                 </a>
             </li>
+
+            @if (User.IsInRole("admin"))
+            {
+                <li class="nav-item">
+                    <a asp-controller="Grad" asp-action="Index" class="nav-link">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>Grad</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Panel" asp-action="Korisnici" class="nav-link">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Korisnici</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Predmet" asp-action="Index" class="nav-link">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Predmeti</span>
+                    </a>
+                </li>
+            }
         </ul>
         <div id="content-wrapper">
 

@@ -55,11 +55,12 @@ namespace polozi_ba.Controllers.api
             foreach (var item in predmeti)
             {
                 _predmet.DodajPredmetKorisniku(Convert.ToInt32(item), user.Id);
+                return Ok(item);
             }
             return Ok();
         }
 
-        [HttpPost("{id}")]
+        [HttpDelete("{id}")]
         [Route("IzbrisiPredmet")]
         public IActionResult IzbrisiPredmetKorisniku([FromQuery]int id)
         {

@@ -1,5 +1,24 @@
-﻿<div class="row">
+﻿@model IQueryable<polozi_ba.Data.PretragaModel>
+
+
+<div class="row">
     <div class="col-md-6">
-        <h1>aaa</h1>
+        @foreach (var item in Model)
+        {
+
+            <label>Korisnik</label>
+            <p>@item.Email</p>
+            <label>Naziv grada</label>
+            <p>@item.NazivGrada</p>
+            <label>Naziv predmeta</label>
+            <p>@item.NazivPredmeta</p>
+        }
+
     </div>
+    @if (Model == null)
+    {
+        <div class="col-md-6">
+            trenutno nemamo instruktora iz tog predmeta u tom gradu
+        </div>
+    }
 </div>

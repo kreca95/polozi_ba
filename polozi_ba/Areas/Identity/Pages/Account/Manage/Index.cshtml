@@ -7,6 +7,18 @@
 }
 <link href="~/css/fSelect.css" rel="stylesheet">
 
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css" />
+
 <h4>@ViewData["Title"]</h4>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -50,7 +62,7 @@
                 <a class="nav-link" data-toggle="tab" href="#menu1">Predmeti</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">Gradovi</a>
             </li>
         </ul>
 
@@ -111,27 +123,32 @@
                                     @item.Naziv
 
                                 </td>
-                                <td >
-                                    <button class="obrisiPredmet" value="@item.Id" >
+                                <td>
+                                    <button class="obrisiPredmet" value="@item.Id">
 
-                                        <i class="fa fa-trash" ></i>
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                    <div class="form-group">
-                        <select name="gearquan" id="listaPredmeta" asp-items="Model.Input.Predmeti" class="demo form-group" multiple="multiple"></select>
-                    </div>
+                <div class="form-group">
+                    <select name="gearquan" id="listaPredmeta" asp-items="Model.Input.Predmeti" class="demo form-group" multiple="multiple"></select>
+                </div>
 
-                    <button class="btn-save btn btn-primary btn-sm" id="submitZaPredmete">Save</button>
+                <button class="btn-save btn btn-primary btn-sm" id="submitZaPredmete">Save</button>
 
             </div>
-            <div class="tab-pane container fade" id="menu2">...</div>
+            <div class="tab-pane container fade" id="menu2">
+                <div class="form-group">
+                    <select name="gearquan" id="listaGradova" asp-items="Model.Input.Gradovi" class="demo form-group" multiple="multiple"></select>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 @*@section Scripts {
         <partial name="_ValidationScriptsPartial" />
@@ -153,6 +170,7 @@
             // Add $(this).val() to your list
             var selected = $(this).val();
 
+
             if (!checkValue(selected, niz)) {
                 niz.push(selected)
 
@@ -162,9 +180,12 @@
                     url: "/api/korisnikapi/DodajPredmet",
                     success: (data) => {
                         console.log(data);
+                        alertify.notify(`Uspjesno dodan predmet`, 'success', 5, function () { console.log(`Uspjesno dodan predmet ${data.Naziv}`); });
                     },
                     error: (err) => {
                         console.log("Greska");
+                        alertify.notify(`Greška `, 'error', 5, function () { console.log(`Uspjesno dodan predmet ${data.Naziv}`); });
+
                     }
                 })
             }
@@ -187,19 +208,22 @@
         return status;
     }
 
-    $(".obrisiPredmet").on("click",() => {
+    $(".obrisiPredmet").on("click", (e) => {
 
-        console.log($(this).val());
-        //$.ajax({
-        //    url: "/api/korisnikapi/IzbrisiPredmet",
-        //    data: { id: id },
-        //    success: (data) => {
-        //        console.log(data);
-        //    },
-        //    error: (err) => {
-        //        console.log(err);
-        //    }
-        //})
+        var id = (e.currentTarget.value);
+
+        $.ajax({
+            url: "/api/korisnikapi/IzbrisiPredmet",
+            data: { id: id },
+            success: (data) => {
+                console.log(data);
+                alertify.notify(`Uspjesno izbrisan predmet`, 'success', 5, function () { console.log(`Uspjesno dodan predmet ${data.Naziv}`); });
+
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
     });
 
 </script>
