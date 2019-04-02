@@ -16,11 +16,13 @@ namespace polozi_ba.Controllers.api
     {
         private readonly UserManager<Korisnik> _userManager;
         private readonly IPredmet _predmet;
+        private readonly IGrad _grad;
 
-        public KorisnikAPIController(UserManager<Korisnik> userManager,IPredmet predmet)
+        public KorisnikAPIController(UserManager<Korisnik> userManager,IPredmet predmet,IGrad grad)
         {
             _userManager = userManager;
             _predmet = predmet;
+            _grad = grad;
         }
 
 
@@ -66,6 +68,23 @@ namespace polozi_ba.Controllers.api
         {
             var userId = _userManager.GetUserId(User);
             _predmet.IzbrisiPredmetKorisniku(id, userId);
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("DodajGrad")]
+        public async Task<IActionResult> DodajGrad([FromForm] IEnumerable<string> gradovi )
+        {
+            if (gradovi==null)
+            {
+                return BadRequest("grad je null");
+            }
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            foreach (var item in gradovi)
+            {
+                _grad.DodajGradKorisniku(Convert.ToInt32(item), user.Id);
+                return Ok(item);
+            }
             return Ok();
         }
     }

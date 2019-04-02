@@ -63,6 +63,8 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
 
             public IEnumerable<Predmet> KorisnikoviPredmeti { get; set; }
 
+            public IEnumerable<Grad> KorisnikoviGradovi { get; set; }
+
             public string Ime { get; set; }
         }
 
@@ -78,6 +80,7 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             var predmeti = _predmet.KorisnikoviPredmeti(user);
+            var gradovi = _grad.KorisnikoviGradovi(user);
             Username = userName;
 
             Input = new InputModel
@@ -86,7 +89,8 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
                 PhoneNumber = phoneNumber,
                 Predmeti = _predmet.SviPredmeti().Select(x => new SelectListItem { Text = x.Naziv, Value = x.Id.ToString() }),
                 Gradovi=_grad.SviGradovi().Select(x=> new SelectListItem { Text=x.Naziv,Value=x.Id.ToString()}),
-                KorisnikoviPredmeti =predmeti
+                KorisnikoviPredmeti =predmeti,
+                KorisnikoviGradovi=gradovi
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

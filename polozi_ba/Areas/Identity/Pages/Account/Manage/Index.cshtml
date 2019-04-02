@@ -137,12 +137,48 @@
                     <select name="gearquan" id="listaPredmeta" asp-items="Model.Input.Predmeti" class="demo form-group" multiple="multiple"></select>
                 </div>
 
-                <button class="btn-save btn btn-primary btn-sm" id="submitZaPredmete">Save</button>
+                <button class="btn-save btn btn-primary" id="submitZaPredmete">Save</button>
 
             </div>
             <div class="tab-pane container fade" id="menu2">
                 <div class="form-group">
+                    <div class="text-danger validation-summary-valid" data-valmsg-summary="true">
+                        <ul>
+                            <li style="display:none"></li>
+                        </ul>
+                    </div>
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Naziv
+                                </td>
+                                <td>Izbrisi</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Input.KorisnikoviGradovi)
+                            {
+                                <tr>
+                                    <td>
+
+                                        @item.Naziv
+
+                                    </td>
+                                    <td>
+                                        <button class="obrisiPredmet" value="@item.Id">
+
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                     <select name="gearquan" id="listaGradova" asp-items="Model.Input.Gradovi" class="demo form-group" multiple="multiple"></select>
+                    <div class="form-group">
+                        <button class="btn-save btn btn-primary" id="submitZaGrad">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,5 +261,31 @@
             }
         })
     });
+
+    $("#submitZaGrad").click(() => {
+        $("#listaGradova option:selected").each(function () {
+            var selected = $(this).val();
+            console.log(selected);
+            if (!checkValue(selected, niz)) {
+                niz.push(selected);
+                $.ajax({
+                    method: "post",
+                    data: { gradovi: selected },
+                    url: "/api/korisnikapi/DodajGrad",
+                    success: (data) => {
+                        console.log(data);
+                        alertify.notify(`Uspjesno dodan grad`, 'success', 5, function () { console.log(`Uspjesno dodan grad ${data.Naziv}`); });
+                    },
+                    error: (err) => {
+                        console.log("Greska");
+                        alertify.notify(`Greška `, 'error', 5, function () { console.log(`nije dodan grad`); });
+
+                    }
+                })
+            }
+
+        })
+    });
+
 
 </script>

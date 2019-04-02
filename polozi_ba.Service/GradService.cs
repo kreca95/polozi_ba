@@ -30,10 +30,23 @@ namespace polozi_ba.Service
             _context.SaveChanges();
         }
 
+        public void DodajGradKorisniku(int gradId, string korisnikId)
+        {
+            _context.KorisnikGrad.Add(new KorisnikGrad { GradId = gradId, KorisnikId = korisnikId });
+            _context.SaveChanges();
+        }
+
         public void Izbrisi(int id)
         {
            var grad= _context.Gradovi.FirstOrDefault(x=> x.Id==id);
             _context.Remove(grad);
+        }
+
+        public IQueryable<Grad> KorisnikoviGradovi(Korisnik korisnik)
+        {
+            var gradovi = _context.Gradovi.FromSql($"select g.Naziv,g.Id from AspNetUsers u,KorisnikGrad kg,Gradovi g where u.Id = '70fd5924-cf3b-484b-b5f3-b1c75ea1116c'  and g.Id = kg.GradId");
+
+            return gradovi;
         }
 
         public Grad NadjiGrad(int id)
