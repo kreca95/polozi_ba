@@ -29,8 +29,11 @@ namespace polozi_ba.Service
 
         public void Dodaj(Data.Models.Predmet predmet)
         {
-            _context.Predmeti.Add(predmet);
-            _context.SaveChanges();
+            if (!PostojiLiPredmet(predmet))
+            {
+                _context.Predmeti.Add(predmet);
+                _context.SaveChanges();
+            }
         }
 
         public void DodajPredmetKorisniku(int idPredmet, string korisnikId)
@@ -64,7 +67,7 @@ namespace polozi_ba.Service
 
         public IQueryable<polozi_ba.Data.Models.Predmet> KorisnikoviPredmeti(Korisnik korisnik)
         {
-            var predmeti = _context.Predmeti.FromSql($"select p.Naziv,p.Id from AspNetUsers u,KorisnikPredmet kp,Predmeti p where u.Id = {korisnik.Id}  and p.Id = kp.PredmetId");
+            var predmeti = _context.Predmeti.FromSql($"select p.Naziv,p.Id from AspNetUsers u,KorisnikPredmet kp,Predmeti p where kp.KorisnikId = {korisnik.Id}  and p.Id = kp.PredmetId and u.Id=kp.KorisnikId");
             return predmeti;
         }
 
@@ -73,6 +76,19 @@ namespace polozi_ba.Service
             var predmet = _context.Predmeti.Where(p => p.Id == id).FirstOrDefault();
 
             return predmet;
+        }
+
+        public bool PostojiLiPredmet(Data.Models.Predmet predmet)
+        {
+            var provjera=_context.Predmeti.Any(x => x.Naziv.ToLower() == predmet.Naziv.ToLower());
+            if (provjera)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public IEnumerable<Data.Models.Predmet> SviPredmeti()

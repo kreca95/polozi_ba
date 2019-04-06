@@ -10,12 +10,14 @@ namespace polozi_ba.Data
     public interface IGrad
     {
         void Dodaj(Grad grad);
-        void Izbrisi(int id);
+        void Izbrisi(Grad grad);
         void Azuriraj(Grad grad);
         Grad NadjiGrad(int id);
         IEnumerable<Grad> SviGradovi();
         IQueryable<Grad> KorisnikoviGradovi(Korisnik korisnik);
 
         void DodajGradKorisniku(int gradId,string korisnikId);
+
+        void IzbrisiGradKorisniku(int gradId, string userId);
     }
 }

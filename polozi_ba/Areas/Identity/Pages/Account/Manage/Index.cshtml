@@ -124,7 +124,7 @@
 
                                 </td>
                                 <td>
-                                    <button class="obrisiPredmet" value="@item.Id">
+                                    <button class="obrisiPredmet btn btn-danger" value="@item.Id">
 
                                         <i class="fa fa-trash"></i>
                                     </button>
@@ -166,7 +166,7 @@
 
                                     </td>
                                     <td>
-                                        <button class="obrisiPredmet" value="@item.Id">
+                                        <button class="obrisiGrad btn btn-danger" value="@item.Id">
 
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -205,7 +205,8 @@
         $("#listaPredmeta option:selected").each(function () {
             // Add $(this).val() to your list
             var selected = $(this).val();
-
+            var btn = $(this);
+            var tr = `<tr>`
 
             if (!checkValue(selected, niz)) {
                 niz.push(selected)
@@ -215,12 +216,17 @@
                     data: { predmeti: selected },
                     url: "/api/korisnikapi/DodajPredmet",
                     success: (data) => {
-                        console.log(data);
+                        //console.log(data);
+                        tr += `<td>${btn.text()}</td>
+                                    <td><button class="obrisiPredmet btn btn-danger" value="Id">
+                                    <i class="fa fa-trash"></i>
+                                    </button></tr>`;
+                        $("tbody").append(tr);
                         alertify.notify(`Uspjesno dodan predmet`, 'success', 5, function () { console.log(`Uspjesno dodan predmet ${data.Naziv}`); });
                     },
-                    error: (err) => {
+                    error: (xhr, ajaxOptions, thrownError) => {
                         console.log("Greska");
-                        alertify.notify(`Greška `, 'error', 5, function () { console.log(`Uspjesno dodan predmet ${data.Naziv}`); });
+                        alertify.notify(`Greška ${xhr} asa   `, 'error', 5, function () { console.log(ajaxOptions); });
 
                     }
                 })
@@ -247,7 +253,6 @@
     $(".obrisiPredmet").on("click", (e) => {
 
         var id = (e.currentTarget.value);
-
         $.ajax({
             url: "/api/korisnikapi/IzbrisiPredmet",
             data: { id: id },
@@ -265,7 +270,9 @@
     $("#submitZaGrad").click(() => {
         $("#listaGradova option:selected").each(function () {
             var selected = $(this).val();
-            console.log(selected);
+            var btn = $(this);
+            var tr=`<tr>`
+            console.log($(this));
             if (!checkValue(selected, niz)) {
                 niz.push(selected);
                 $.ajax({
@@ -274,10 +281,14 @@
                     url: "/api/korisnikapi/DodajGrad",
                     success: (data) => {
                         console.log(data);
-                        alertify.notify(`Uspjesno dodan grad`, 'success', 5, function () { console.log(`Uspjesno dodan grad ${data.Naziv}`); });
+                        alertify.notify(`Uspjesno dodan grad ${btn.text()}`, 'success', 5, function () { console.log(`Uspjesno dodan grad ${btn.text}`); });
+                        tr += `<td>${btn.text()}</td>
+                                    <td><button class="obrisiGrad btn btn-danger" value="Id">
+                                    <i class="fa fa-trash"></i>
+                                    </button></tr>`;
+                        $("tbody").append(tr);
                     },
                     error: (err) => {
-                        console.log("Greska");
                         alertify.notify(`Greška `, 'error', 5, function () { console.log(`nije dodan grad`); });
 
                     }
@@ -287,5 +298,29 @@
         })
     });
 
+    $(".obrisiGrad").on("click", (e) => {
 
+        var id = (e.currentTarget.value);
+        var btn = $(this);
+        $.ajax({
+            url: "/api/korisnikapi/IzbrisiGrad",
+            data: { id: id },
+            success: (data) => {
+                alertify.notify(`Uspjesno izbrisan grad`, 'success', 5, function () { console.log(`Uspjesno dodan grad ${data.Naziv}`); });
+               
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
+    });
+
+    $(document).on("click", '.obrisiGrad', function () {
+
+        $(this).closest('tr').remove();
+    });
+    $(document).on("click", '.obrisiPredmet', function () {
+
+        $(this).closest('tr').remove();
+    });
 </script>

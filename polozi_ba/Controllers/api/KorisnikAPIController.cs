@@ -56,8 +56,9 @@ namespace polozi_ba.Controllers.api
             var user=await _userManager.FindByNameAsync(User.Identity.Name);
             foreach (var item in predmeti)
             {
-                _predmet.DodajPredmetKorisniku(Convert.ToInt32(item), user.Id);
-                return Ok(item);
+                    _predmet.DodajPredmetKorisniku(Convert.ToInt32(item), user.Id);
+                    return Ok(item);
+
             }
             return Ok();
         }
@@ -86,6 +87,25 @@ namespace polozi_ba.Controllers.api
                 return Ok(item);
             }
             return Ok();
+        }
+
+
+        [HttpDelete("{id}")]
+        [Route("IzbrisiGrad")]
+        public async Task<IActionResult> IzbrisiGrad([FromQuery] int id)
+        {
+            var grad = _grad.NadjiGrad(id);
+            var user =await _userManager.FindByEmailAsync(User.Identity.Name);
+            if (grad!=null && user!=null)
+            {
+                _grad.IzbrisiGradKorisniku(id,user.Id);
+                return Ok("Grad je uspješno izbrisan");
+            }
+            else
+            {
+                return BadRequest("Greska");
+            }
+
         }
     }
 }
