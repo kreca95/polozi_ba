@@ -12,6 +12,7 @@
     <Compile Remove="Migrations\20190320143738_aasd.cs" />
     <Compile Remove="Migrations\20190320143851_bezza.cs" />
     <Compile Remove="Migrations\20190320144133_bezza.cs" />
+    <Compile Remove="Migrations\20190412191632_test facebooklogina.cs" />
   </ItemGroup>
 
   <ItemGroup>

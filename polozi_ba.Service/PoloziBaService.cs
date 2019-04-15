@@ -36,7 +36,10 @@ namespace polozi_ba.Service
                                      GradId = kg.GradId,
                                      Email=us.Email,
                                      NazivGrada=kg.Grad.Naziv,
-                                     NazivPredmeta=kp.Predmet.Naziv
+                                     NazivPredmeta=kp.Predmet.Naziv,
+                                     Prezime=us.Prezime,
+                                     Ime=us.Ime,
+                                     Slika=us.SlikaUrl
                                  }
                                );
             return pretragaModel;

@@ -13,5 +13,9 @@ namespace polozi_ba.Data
         public string Email { get; set; }
         public string NazivGrada { get; set; }
         public string NazivPredmeta { get; set; }
+
+        public string Prezime { get; set; }
+        public string Ime { get; set; }
+        public string Slika { get; set; }
     }
 }

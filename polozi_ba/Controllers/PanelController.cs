@@ -23,6 +23,7 @@ namespace polozi_ba.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.user = User.Claims;
             return View();
         }
 

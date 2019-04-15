@@ -20,5 +20,7 @@ namespace polozi_ba.Data.Models
         public virtual IdentityRole Role { get; set; }
 
         public virtual List<KorisnikGrad> KorisnikGrad { get; set; }
+
+        public string SlikaUrl { get; set; }
     }
 }

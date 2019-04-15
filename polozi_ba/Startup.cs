@@ -64,16 +64,8 @@ namespace polozi_ba
                 {
                     options.AppId = "346508559443989";
                     options.AppSecret = "7867bb5d8de5d09d02805ac4e4a9cf56";
-                    options.SaveTokens = true;
-                    options.ClaimActions.MapJsonKey(ClaimTypes.DateOfBirth, "birthday");
                     options.Scope.Add("public_profile");
-                    options.Fields.Add("birthday");
                     options.Fields.Add("picture");
-                    options.Fields.Add("name");
-                    options.Fields.Add("email");
-                    options.Fields.Add("gender");
-
-
                 });
 
 

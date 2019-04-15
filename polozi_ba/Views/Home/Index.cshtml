@@ -47,7 +47,7 @@
                                                     <option value="#">Matematika</option>
                                                     <option value="#">Engleski</option>
                                                 </select>*@
-                                            <select asp-for="Predmet" id="people" class="form-control" asp-items="@Model.PredmetiSelectLista"  >
+                                            <select asp-for="Predmet" id="people" class="form-control" asp-items="@Model.PredmetiSelectLista" required>
                                                <option>Izaberite predmet</option>
                                             </select>
                                         </div>
@@ -58,7 +58,7 @@
                                         <!-- <label for="difficulty">Difficulty</label> -->
                                         <div class="form-field">
                                             <i class="icon icon-arrow-down3"></i>
-                                            <select class="form-control" asp-for="Grad" asp-items="@Model.GradoviSelectLista">
+                                            <select class="form-control" asp-for="Grad" asp-items="@Model.GradoviSelectLista" required>
                                                 <option>Izaberite grad</option>
                                             </select>
                                         </div>

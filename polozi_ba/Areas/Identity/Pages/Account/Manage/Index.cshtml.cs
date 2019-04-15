@@ -66,6 +66,8 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
             public IEnumerable<Grad> KorisnikoviGradovi { get; set; }
 
             public string Ime { get; set; }
+
+            public string SlikaUrl { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -88,9 +90,10 @@ namespace polozi_ba.Areas.Identity.Pages.Account.Manage
                 Email = email,
                 PhoneNumber = phoneNumber,
                 Predmeti = _predmet.SviPredmeti().Select(x => new SelectListItem { Text = x.Naziv, Value = x.Id.ToString() }),
-                Gradovi=_grad.SviGradovi().Select(x=> new SelectListItem { Text=x.Naziv,Value=x.Id.ToString()}),
-                KorisnikoviPredmeti =predmeti,
-                KorisnikoviGradovi=gradovi
+                Gradovi = _grad.SviGradovi().Select(x => new SelectListItem { Text = x.Naziv, Value = x.Id.ToString() }),
+                KorisnikoviPredmeti = predmeti,
+                KorisnikoviGradovi = gradovi,
+                SlikaUrl = user.SlikaUrl
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

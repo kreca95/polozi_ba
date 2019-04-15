@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -107,6 +108,9 @@ namespace polozi_ba.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             // Get the information about the user from the external login provider
             var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            var identifier = info.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            var picture = $"https://graph.facebook.com/{identifier}/picture";
             if (info == null)
             {
                 ErrorMessage = "Error loading external login information during confirmation.";
@@ -116,12 +120,15 @@ namespace polozi_ba.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new Korisnik { UserName = Input.Email, Email = Input.Email };
+                user.SlikaUrl = picture;
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
+                        //aa
+                        //aa
                         await _userManager.AddToRoleAsync(user, "korisnik");
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
